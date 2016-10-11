@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>231359804470-l1ec891nduhq17tojkql7giigtnms0hm.apps.googleusercontent.com</string>
+	<string>231359804470-373tk873ipgjlshp2lmepukn107f9cov.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.231359804470-l1ec891nduhq17tojkql7giigtnms0hm</string>
+	<string>com.googleusercontent.apps.231359804470-373tk873ipgjlshp2lmepukn107f9cov</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAQ_P4zhPgEb-I1Y2MDEBN1HBKeQoMkToE</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.ux.conference.conference</string>
+	<string>com.ux.conference.2016</string>
 	<key>PROJECT_ID</key>
 	<string>conference-5ae3c</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:231359804470:ios:8fcec1eccd993c2b</string>
+	<string>1:231359804470:ios:d40564b9fa4d2ce1</string>
 	<key>DATABASE_URL</key>
 	<string>https://conference-5ae3c.firebaseio.com</string>
 </dict>

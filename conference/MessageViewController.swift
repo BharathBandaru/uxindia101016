@@ -26,7 +26,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         senbutton.clipsToBounds = true
         senbutton.layer.cornerRadius = 5
         let border = CALayer()
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = UIColor.clear
         
+
         let width = CGFloat(2.0)
         let databaseRef = FIRDatabase.database().reference()
         databaseRef.child("queries").queryOrderedByKey().observe(.childAdded) { (snapshot : FIRDataSnapshot) in
@@ -43,7 +48,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         border.borderWidth = width
         msg.layer.addSublayer(border)
-        msg.layer.masksToBounds = true    }
+        msg.layer.masksToBounds = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -64,10 +70,13 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         let post : [String : String] = ["msg" : messagelabel.text!, "name" : defaults.string(forKey: "username")!]
         let databaseRef = FIRDatabase.database().reference()
         databaseRef.child("queries").childByAutoId().setValue(post)
-        
+
     }
 
-
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        uitableview.reloadData()
+        return nil
+    }
     @IBAction func sendButtonPressed(_ sender: AnyObject) {
         if messagelabel.text == ""{
             print ("Tested")
@@ -75,6 +84,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         else {
             post()
         }
+        uitableview.reloadData()
     }
 
 }

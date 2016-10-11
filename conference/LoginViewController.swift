@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController,UITextFieldDelegate {
 
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTF: UITextField!
@@ -17,6 +17,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.layoutIfNeeded()
+        emailTF.delegate = self
+        passcodeTF.delegate = self
+
+        // for tapping
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
               loginButton.clipsToBounds=true
         loginButton.layer.cornerRadius=loginButton.frame.size.height/2
         let border = CALayer()
@@ -64,6 +69,19 @@ class LoginViewController: UIViewController {
             self.present(alertController, animated: true, completion: nil)
 
         }
+    }
+    func dismissKeyboard() {
+        emailTF.resignFirstResponder()
+        passcodeTF.resignFirstResponder()
+
+    }
+    
+    // for hitting return
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        emailTF.resignFirstResponder()
+        passcodeTF.resignFirstResponder()
+
+        return true
     }
     /*
     // MARK: - Navigation

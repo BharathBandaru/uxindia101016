@@ -132,7 +132,12 @@ class FeedbackViewController: UIViewController {
         if isConnectedToNetwork() == true {
             print("Internet connection OK")
             post()
-            
+            let alertController = UIAlertController(title: "Thank You!", message: "Your Feedback has been successfully submitted", preferredStyle: .alert)
+            self.present(alertController, animated: true, completion:nil)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                print("You've pressed OK button");
+            }
+            alertController.addAction(OKAction)
             
         } else {
             print("Internet connection FAILED")

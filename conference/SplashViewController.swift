@@ -13,7 +13,7 @@ class SplashViewController: UIViewController {
         addLogo()
         
         // Show the home screen after a bit. Calls the show() function.
-        let timer = Timer.scheduledTimer(
+        _ = Timer.scheduledTimer(
             timeInterval: 2.5, target: self, selector: #selector(UIAlertView.show), userInfo: nil, repeats: false
         )
     }
@@ -68,8 +68,9 @@ class SplashViewController: UIViewController {
         let w = 100.0 as CGFloat
         let h = 100.0 as CGFloat
         logoView.frame = CGRect(x:(self.view.frame.size.width / 2) - (w/2), y:(self.view.frame.size.height / 2) - (h/2),width: w,height: h )
-        let label = UILabel(frame: CGRect(x: (self.view.frame.size.width / 2) - (w/2) - 50, y: (self.view.frame.size.height / 2) + (h) - 20, width: 200, height: 21))
-        
+        let label = UILabel(frame: CGRect(x: (self.view.frame.size.width / 2), y: (self.view.frame.size.height / 2) + (h) - 20, width: 200, height: 21))
+        label.frame.origin = CGPoint(x: self.view.frame.width / 2 - 85, y: (self.view.frame.size.height / 2) + (h) - 20 )
+
         // you will probably want to set the font (remember to use Dynamic Type!)
         label.font = UIFont(name: "Helvetica", size: 30.0)
         // and set the text color too - remember good contrast

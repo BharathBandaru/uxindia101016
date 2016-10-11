@@ -36,7 +36,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     
-    var filterdArray : [String]? = []
+    var filteredArray = [String]()
     var headings1 = ["REGISTRATIONS","Opening Remarks","WOMEN IN DESIGN","","UX Clinic","","","CLOSING REMARKS"]
     var section3headings = ["Leadership Track","Advanced Track","Essentials Track","Women in Design Track"]
     var section5headings = ["Driving UX in an insurance company","Design, Develop and SURVIVE","Improving overall experience of an Enterprise Platform by Evidence and Research based design","Driving Design Thinking in Enterprise Products","Standing Strong: Leading Business By Design","Impact of Inclusive Design - beyond disabilities","Assistive Technology and UX","Design Intervention- How the industry evolved with it?","Building a great UX team: The hiring experience","Design Thinking - Getting From There to Here","","The Design Sprint - Transforming Constraints into Catalysts for Creativity and Innovation","Using UX to design user led furniture","Data Visualization Aiding Not Just Super Heroes","“Creating delightful human experiences | Social Centered design approach to impact people & Communities","Change by Design – A Woman-Centric Way of Driving the Design Culture","Design as Social Capital","'TOD' : A UX Pillar that helps in designing for decision makers","Progressive Web Applications - What to keep in mind","Women Entrepreneur in Design"]
@@ -110,6 +110,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
         self.view.layoutIfNeeded()
         uxtableview.reloadData()
+        filteredArray.append("BAPU KALADHAR")
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
@@ -118,7 +119,6 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(ScheduleViewController.respondToSwipeGesture(_:)))
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
-        
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(ScheduleViewController.respondToSwipeGesture(_:)))
         swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
@@ -391,8 +391,9 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     }
     func didChangeSearchText(_ searchText: String) {
         // Filter the data array and get only those countries that match the search text.
-        filterdArray = imagenames.filter({ (country) -> Bool in
+        filteredArray = imagenames.filter({ (country) -> Bool in
             let countryText: NSString = country as NSString
+            print("here")
             
             return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
         })
@@ -400,17 +401,24 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         // Reload the tableview.
         uxtableview.reloadData()
     }
+  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MatterTableViewCell
         tableView.estimatedRowHeight = 100.0;
         tableView.rowHeight = UITableViewAutomaticDimension
-        
+        if shouldShowSearchResults {
+            print("index :\(indexPath.row)")
+            cell.heading?.text = filteredArray[(indexPath as NSIndexPath).row]
+            return cell
+
+        }
+    
         // 3
         // Configure the cell...
         if but20.backgroundColor != UIColor.clear{
             print("but 20")
             
-            cell.heading?.text = headings[(indexPath as NSIndexPath).section]
+            cell.heading?.text = headings[(indexPath as NSIndexPath).section].capitalized
             cell.matter?.text = submatters[(indexPath as NSIndexPath).section]
             //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
             cell.imgv.image = UIImage(named: imageName[(indexPath as NSIndexPath).section])
@@ -469,7 +477,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
             print("but 21")
             switch ((indexPath as NSIndexPath).section) {
             case 3 :
-                cell.heading?.text = section3headings[(indexPath as NSIndexPath).row]
+                cell.heading?.text = section3headings[(indexPath as NSIndexPath).row].capitalized
                 cell.matter?.text = section3submatters1[(indexPath as NSIndexPath).row]
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
                 cell.colorbar.backgroundColor = UIColorFromRGB(section3colorcodes[(indexPath as NSIndexPath).row])
@@ -477,7 +485,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.imgname?.text = section3imagesnames1[(indexPath as NSIndexPath).row]
                 break
             case 5:
-                cell.heading?.text = section5headings[(indexPath as NSIndexPath).row]
+                cell.heading?.text = section5headings[(indexPath as NSIndexPath).row].capitalized
                 cell.matter?.text = section5submatters1[(indexPath as NSIndexPath).row]
                 cell.colorbar.backgroundColor = UIColorFromRGB(section5colorcodes[(indexPath as NSIndexPath).row])
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
@@ -485,7 +493,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.imgname?.text = section5imagesnames1[(indexPath as NSIndexPath).row]
                 break
             case 6:
-                cell.heading?.text = section6headings[(indexPath as NSIndexPath).row]
+                cell.heading?.text = section6headings[(indexPath as NSIndexPath).row].capitalized
                 cell.matter?.text = section6submatters1[(indexPath as NSIndexPath).row]
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
                 cell.colorbar.backgroundColor = UIColorFromRGB(section6colorcodes[(indexPath as NSIndexPath).row])
@@ -494,7 +502,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.imgname?.text = section6imagesnames1[(indexPath as NSIndexPath).row]
                 break
             default :
-                cell.heading?.text = headings1[(indexPath as NSIndexPath).section]
+                cell.heading?.text = headings1[(indexPath as NSIndexPath).section].capitalized
                 cell.matter?.text = submatters1[(indexPath as NSIndexPath).section]
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
                 cell.imgv.image = UIImage(named: imagename1[(indexPath as NSIndexPath).section])
