@@ -17,7 +17,7 @@ class FeedbackViewController: UIViewController {
     @IBOutlet weak var twitterButton: UIButton!
     @IBOutlet weak var uireview: UITextField!
     @IBOutlet weak var submit_UiBut: UIButton!
-   // var ref: FIRDatabaseReference!
+    // var ref: FIRDatabaseReference!
     @IBOutlet weak var rate_learn: CosmosView!
     @IBOutlet weak var rate_exp: CosmosView!
     @IBOutlet weak var scrollview: UIScrollView!
@@ -35,7 +35,7 @@ class FeedbackViewController: UIViewController {
         submit_UiBut.clipsToBounds = true
         submit_UiBut.layer.cornerRadius = 5
         scrollview.contentSize.height = 592
-       // ref = FIRDatabase.database().reference()
+        // ref = FIRDatabase.database().reference()
         rate_learn.didFinishTouchingCosmos = { rating in
             print("rating :\(rating)")
             self.rate2 = rating
@@ -46,7 +46,7 @@ class FeedbackViewController: UIViewController {
         }
         if isConnectedToNetwork() == true {
             print("Internet connection OK")
-           
+            
         } else {
             print("Internet connection FAILED")
             let alertController = UIAlertController(title: "Error", message: "No internet connection", preferredStyle: .alert)
@@ -58,9 +58,9 @@ class FeedbackViewController: UIViewController {
         }
         
     }
-
-
-
+    
+    
+    
     func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in()
@@ -89,15 +89,15 @@ class FeedbackViewController: UIViewController {
     {   review = uireview.text!
         let post : [String : String] = ["experience" : "\(rate1)","learning" : "\(rate2)", "feedback" : review]
         let databaseRef = FIRDatabase.database().reference()
-          let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard
         databaseRef.child(defaults.string(forKey: "username")!).setValue(post)
-
+        
     }
     func tweet()
     {
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeTwitter){
             let twitterController:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-            twitterController.setInitialText("Posting a tweet from iOS App" + "\r\n" + "\r\n" + "#Cool")
+            twitterController.setInitialText("@uxindiaconf " )
             self.present(twitterController, animated: true, completion: nil)
         } else {
             let alertController = UIAlertController(title: "Twitter Account", message: "Please login to your Twitter account.", preferredStyle: .alert)
@@ -114,7 +114,7 @@ class FeedbackViewController: UIViewController {
     {
         if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
             let facebookSheet:SLComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-            facebookSheet.setInitialText("Share on Facebook")
+            facebookSheet.setInitialText("#uxInida ")
             self.present(facebookSheet, animated: true, completion: nil)
         } else {
             let alert = UIAlertController(title: "Accounts", message: "Please login to a Facebook account to share.", preferredStyle: UIAlertControllerStyle.alert)
@@ -132,7 +132,7 @@ class FeedbackViewController: UIViewController {
         if isConnectedToNetwork() == true {
             print("Internet connection OK")
             post()
-           
+            
             
         } else {
             print("Internet connection FAILED")
@@ -143,8 +143,8 @@ class FeedbackViewController: UIViewController {
             }
             alertController.addAction(OKAction)
         }
-
+        
     }
-
-   // self.ref.child("feed").child("feedID")
+    
+    // self.ref.child("feed").child("feedID")
 }

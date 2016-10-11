@@ -7,37 +7,74 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
-class MessageViewController: UIViewController {
+struct postStruct {
+    let message  : String!
+    let name : String!
+}
 
+class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    var posts = [postStruct]()
+    @IBOutlet weak var uitableview: UITableView!
     @IBOutlet weak var msg: UITextField!
+    @IBOutlet weak var messagelabel: UITextField!
+    @IBOutlet weak var senbutton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        senbutton.clipsToBounds = true
+        senbutton.layer.cornerRadius = 5
         let border = CALayer()
+        
         let width = CGFloat(2.0)
+        let databaseRef = FIRDatabase.database().reference()
+        databaseRef.child("queries").queryOrderedByKey().observe(.childAdded) { (snapshot : FIRDataSnapshot) in
+            let snapshotValue = snapshot.value as? Dictionary<String, Any>
+            let message = snapshotValue!["msg"] as! String
+            let name = snapshotValue!["name"] as! String
+            let firstChar = "\(name[name.startIndex])"
+            self.posts.insert(postStruct(message:  message ,name: firstChar.uppercased()), at: 0)
+            self.uitableview.reloadData()
+        }
+
         border.borderColor = UIColor.black.cgColor
         border.frame = CGRect(x: 0, y: msg.frame.size.height-width, width:  msg.frame.size.width, height: msg.frame.size.height)
         
         border.borderWidth = width
         msg.layer.addSublayer(border)
-        msg.layer.masksToBounds = true
-        // Do any additional setup after loading the view.
-    }
+        msg.layer.masksToBounds = true    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return posts.count
     }
-    */
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+         let cell = tableView.dequeueReusableCell(withIdentifier: "mcell", for: indexPath) as! MessageTableViewCell
+        cell.nameLabel.text = posts[indexPath.row].name
+        cell.messageLabel.text = posts[indexPath.row].message
+        return cell
+    }
+    func post()
+    {   let defaults = UserDefaults.standard
+        let post : [String : String] = ["msg" : messagelabel.text!, "name" : defaults.string(forKey: "username")!]
+        let databaseRef = FIRDatabase.database().reference()
+        databaseRef.child("queries").childByAutoId().setValue(post)
+        
+    }
+
+
+    @IBAction func sendButtonPressed(_ sender: AnyObject) {
+        if messagelabel.text == ""{
+            print ("Tested")
+        }
+        else {
+            post()
+        }
+    }
 
 }

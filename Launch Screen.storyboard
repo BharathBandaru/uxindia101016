@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,36 +19,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UXINDIA 2016" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukJ-sm-HbM">
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="playstore-icon" translatesAutoresizingMaskIntoConstraints="NO" id="79N-CK-w27">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="FN3-9K-60j"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UXINDIA 2016" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="GJd-Yh-RWb">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="dsS-qN-Vag"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="33"/>
+                                        <color key="textColor" red="0.50764888743455505" green="0.50764888743455505" blue="0.50764888743455505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="Qio-k9-PTM"/>
-                                    <constraint firstAttribute="width" constant="225" id="bHI-yL-qrq"/>
+                                    <constraint firstItem="79N-CK-w27" firstAttribute="top" secondItem="ukJ-sm-HbM" secondAttribute="top" constant="9" id="4hl-du-vnX"/>
+                                    <constraint firstItem="79N-CK-w27" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="4is-Zn-kBn"/>
+                                    <constraint firstAttribute="bottom" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="35" id="Iix-zh-8zP"/>
+                                    <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="79N-CK-w27" secondAttribute="bottom" constant="31" id="JCb-oy-xbl"/>
+                                    <constraint firstItem="GJd-Yh-RWb" firstAttribute="leading" secondItem="ukJ-sm-HbM" secondAttribute="leading" constant="59" id="W0K-7N-TTO"/>
+                                    <constraint firstItem="79N-CK-w27" firstAttribute="centerX" secondItem="ukJ-sm-HbM" secondAttribute="centerX" id="dy8-eO-FMY"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="33"/>
-                                <color key="textColor" red="0.50764888743455505" green="0.50764888743455505" blue="0.50764888743455505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="playstore-icon" translatesAutoresizingMaskIntoConstraints="NO" id="79N-CK-w27">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="K3t-VF-E2B"/>
-                                    <constraint firstAttribute="height" constant="100" id="afx-zo-iFw"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="qAr-Nk-BYI"/>
-                                </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="79N-CK-w27" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="231" id="HaT-zc-JbW"/>
-                            <constraint firstItem="79N-CK-w27" firstAttribute="centerX" secondItem="GJd-Yh-RWb" secondAttribute="centerX" id="PZd-YX-uk3"/>
-                            <constraint firstItem="GJd-Yh-RWb" firstAttribute="top" secondItem="79N-CK-w27" secondAttribute="bottom" constant="20" id="ctS-2V-n24"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="GJd-Yh-RWb" secondAttribute="bottom" constant="252" id="gGZ-ak-4CP"/>
-                            <constraint firstItem="79N-CK-w27" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="z9f-jA-Lus"/>
+                            <constraint firstItem="ukJ-sm-HbM" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2L4-oG-hw2"/>
+                            <constraint firstItem="ukJ-sm-HbM" firstAttribute="trailing" secondItem="Ze5-6b-2t3" secondAttribute="trailingMargin" id="AOw-Vx-CQJ"/>
+                            <constraint firstItem="ukJ-sm-HbM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Mfi-hr-6mq"/>
+                            <constraint firstItem="ukJ-sm-HbM" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="204" id="ZC1-4O-ie9"/>
+                            <constraint firstItem="ukJ-sm-HbM" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="tdi-Mn-5pA"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="51" y="345"/>
+            <point key="canvasLocation" x="50.399999999999999" y="344.97751124437787"/>
         </scene>
     </scenes>
     <resources>

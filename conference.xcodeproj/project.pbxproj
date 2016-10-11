@@ -14,6 +14,7 @@
 		8EA4849D1DAA63EC00843480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EA4849C1DAA63EC00843480 /* GoogleService-Info.plist */; };
 		8EA4849F1DAAC04B00843480 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA4849E1DAAC04B00843480 /* Reachability.swift */; };
 		8EA484A11DAADDA400843480 /* ThanksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA484A01DAADDA400843480 /* ThanksViewController.swift */; };
+		8EA484A51DAD031300843480 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA484A41DAD031300843480 /* MessageTableViewCell.swift */; };
 		8EC2900B1D6B5DB100D8799F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2900A1D6B5DB100D8799F /* AppDelegate.swift */; };
 		8EC2900D1D6B5DB100D8799F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2900C1D6B5DB100D8799F /* FirstViewController.swift */; };
 		8EC2900F1D6B5DB100D8799F /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EC2900E1D6B5DB100D8799F /* ScheduleViewController.swift */; };
@@ -79,6 +80,7 @@
 		8EA4849C1DAA63EC00843480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EA4849E1DAAC04B00843480 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		8EA484A01DAADDA400843480 /* ThanksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThanksViewController.swift; sourceTree = "<group>"; };
+		8EA484A41DAD031300843480 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
 		8EC290071D6B5DAE00D8799F /* conference.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = conference.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EC2900A1D6B5DB100D8799F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8EC2900C1D6B5DB100D8799F /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				8ECD36551DA95CB900D4C457 /* FaqDetailViewController.swift */,
 				8EA4849E1DAAC04B00843480 /* Reachability.swift */,
 				8EA484A01DAADDA400843480 /* ThanksViewController.swift */,
+				8EA484A41DAD031300843480 /* MessageTableViewCell.swift */,
 			);
 			path = conference;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				A53D806C1D8594E10000766E /* DetailViewController.swift in Sources */,
 				A53D80581D817F440000766E /* FAQTableViewCell.swift in Sources */,
 				8EC2900D1D6B5DB100D8799F /* FirstViewController.swift in Sources */,
+				8EA484A51DAD031300843480 /* MessageTableViewCell.swift in Sources */,
 				A53D80561D817F160000766E /* FAQTv.swift in Sources */,
 				A53D80521D8168180000766E /* CosmosView.swift in Sources */,
 				A53D804E1D815B650000766E /* ProfileViewController.swift in Sources */,
