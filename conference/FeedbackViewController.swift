@@ -34,7 +34,7 @@ class FeedbackViewController: UIViewController {
         twitterButton.layer.cornerRadius = 5
         submit_UiBut.clipsToBounds = true
         submit_UiBut.layer.cornerRadius = 5
-        
+        scrollview.contentSize.height = 592
        // ref = FIRDatabase.database().reference()
         rate_learn.didFinishTouchingCosmos = { rating in
             print("rating :\(rating)")
