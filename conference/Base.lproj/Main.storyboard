@@ -13,7 +13,7 @@
         <!--FEEDBACK-->
         <scene sceneID="hhm-1l-aSY">
             <objects>
-                <viewController storyboardIdentifier="feed" id="ZSL-nD-yOJ" customClass="FeedbackViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="feed" id="ZSL-nD-yOJ" customClass="FeedbackViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MkU-pR-0VP"/>
                         <viewControllerLayoutGuide type="bottom" id="3Jq-td-xwF"/>
@@ -197,7 +197,7 @@
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhX-EF-p7U" customClass="CosmosView" customModule="conference" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhX-EF-p7U" customClass="CosmosView" customModule="_016" customModuleProvider="target">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LuH-IS-vaG">
@@ -209,7 +209,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="evt-F3-s5T"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROC-lQ-LqR" customClass="CosmosView" customModule="conference" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROC-lQ-LqR" customClass="CosmosView" customModule="_016" customModuleProvider="target">
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9A-LH-l8X">
@@ -345,7 +345,7 @@
         <!--Location-->
         <scene sceneID="VS5-2D-MVi">
             <objects>
-                <viewController id="WYP-Qz-5OP" customClass="MapViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WYP-Qz-5OP" customClass="MapViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Rew-vT-rYI"/>
                         <viewControllerLayoutGuide type="bottom" id="64n-Jd-V2e"/>
@@ -365,7 +365,7 @@
         <!--MESSAGE-->
         <scene sceneID="gFT-Qa-g4X">
             <objects>
-                <viewController id="8yH-Br-6UY" customClass="MessageViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8yH-Br-6UY" customClass="MessageViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xx1-Ly-T1C"/>
                         <viewControllerLayoutGuide type="bottom" id="cuv-QU-Dki"/>
@@ -392,11 +392,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="63" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-8A-onU">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mcell" rowHeight="63" id="zW7-Xx-FqB" customClass="MessageTableViewCell" customModule="conference" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mcell" rowHeight="63" id="zW7-Xx-FqB" customClass="MessageTableViewCell" customModule="_016" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zW7-Xx-FqB" id="Sxa-6O-unh">
-                                            <frame key="frameInset" width="375" height="62.5"/>
+                                            <frame key="frameInset" width="375" height="62"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDf-zy-mwc">
@@ -498,7 +498,7 @@
         <!--Faq Detail View Controller-->
         <scene sceneID="gXN-Qj-hsU">
             <objects>
-                <viewController id="IAu-Cm-Pah" customClass="FaqDetailViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="IAu-Cm-Pah" customClass="FaqDetailViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="N90-Ak-k1U"/>
                         <viewControllerLayoutGuide type="bottom" id="YLb-vi-ahv"/>
@@ -576,7 +576,7 @@
         <!--FAQs-->
         <scene sceneID="D4y-CT-sqQ">
             <objects>
-                <viewController id="5ci-eM-EZo" customClass="FAQTv" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5ci-eM-EZo" customClass="FAQTv" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ILI-FH-ApF"/>
                         <viewControllerLayoutGuide type="bottom" id="2TB-bl-uQm"/>
@@ -603,11 +603,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ooh-Aq-aIP">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pcell" rowHeight="94" id="yMg-89-RJt" customClass="FAQTableViewCell" customModule="conference" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="pcell" rowHeight="94" id="yMg-89-RJt" customClass="FAQTableViewCell" customModule="_016" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="94"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yMg-89-RJt" id="zbU-Xg-Pl7">
-                                            <frame key="frameInset" width="375" height="93.5"/>
+                                            <frame key="frameInset" width="375" height="93"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5i-WR-gax">
@@ -685,7 +685,7 @@
         <!--Tabbed Controller-->
         <scene sceneID="Uc5-xG-bjo">
             <objects>
-                <tabBarController storyboardIdentifier="mytabs" id="fg8-7Q-8kJ" customClass="TabbedController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="mytabs" id="fg8-7Q-8kJ" customClass="TabbedController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" tag="1" contentMode="scaleToFill" translucent="NO" itemPositioning="fill" id="3ca-U6-5ro">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -716,7 +716,7 @@
         <!--Login View Controller-->
         <scene sceneID="lZu-T0-cWy">
             <objects>
-                <viewController storyboardIdentifier="mylogin" id="ZPh-Uk-Rub" customClass="LoginViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mylogin" id="ZPh-Uk-Rub" customClass="LoginViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="beo-Wj-WSu"/>
                         <viewControllerLayoutGuide type="bottom" id="a6h-9t-mE2"/>
@@ -805,7 +805,7 @@
         <!--Splash View Controller-->
         <scene sceneID="yUm-Ob-mYq">
             <objects>
-                <viewController id="BBB-OH-7kZ" customClass="SplashViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BBB-OH-7kZ" customClass="SplashViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dux-fN-upg"/>
                         <viewControllerLayoutGuide type="bottom" id="5z2-qR-MGx"/>
@@ -823,7 +823,7 @@
         <!--Schedule View Controller-->
         <scene sceneID="Tc3-aX-R4Q">
             <objects>
-                <viewController id="71T-pt-2mw" customClass="ScheduleViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="71T-pt-2mw" customClass="ScheduleViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="efb-gr-bRY"/>
                         <viewControllerLayoutGuide type="bottom" id="K6A-4e-z9m"/>
@@ -924,11 +924,11 @@
                                     <constraint firstAttribute="height" constant="420" id="HWJ-Q5-3Rr"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="103" id="N6c-WW-7Vw" customClass="MatterTableViewCell" customModule="conference" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="103" id="N6c-WW-7Vw" customClass="MatterTableViewCell" customModule="_016" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="103"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N6c-WW-7Vw" id="TdQ-Ua-Jm0">
-                                            <frame key="frameInset" width="375" height="102.5"/>
+                                            <frame key="frameInset" width="375" height="102"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kb" translatesAutoresizingMaskIntoConstraints="NO" id="yam-m6-jvo">
@@ -959,7 +959,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="231" id="uHS-Va-le8"/>
                                                     </constraints>
-                                                    <string key="text">India's biggest international conference
+                                                    <string key="text">India's biggest international 2016
 on user experience design</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1011,11 +1011,11 @@ on user experience design</string>
                                             <outlet property="roomno" destination="fCD-Dr-29B" id="f1L-fa-ZtL"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="44" id="GYu-TS-eNC" customClass="CustomHeaderCell" customModule="conference" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HeaderCell" rowHeight="44" id="GYu-TS-eNC" customClass="CustomHeaderCell" customModule="_016" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="131" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GYu-TS-eNC" id="l7h-aT-UHR">
-                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <frame key="frameInset" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRM-wy-t2z">
@@ -1081,7 +1081,7 @@ on user experience design</string>
         <!--PROFILE-->
         <scene sceneID="bwm-yq-mU3">
             <objects>
-                <viewController id="b2T-cS-vMD" customClass="ProfileViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b2T-cS-vMD" customClass="ProfileViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6jj-of-3Fd"/>
                         <viewControllerLayoutGuide type="bottom" id="d0z-eb-ITg"/>
@@ -1178,7 +1178,7 @@ on user experience design</string>
         <!--Detail View Controller-->
         <scene sceneID="Icn-ff-uID">
             <objects>
-                <viewController id="zWS-IP-oWS" customClass="DetailViewController" customModule="conference" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zWS-IP-oWS" customClass="DetailViewController" customModule="_016" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mTq-mj-QEl"/>
                         <viewControllerLayoutGuide type="bottom" id="twN-8j-7c3"/>

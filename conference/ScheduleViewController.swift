@@ -9,12 +9,18 @@
 import UIKit
 
 
-class ScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating,UISearchBarDelegate,CustomSearchControllerDelegate
+{
+    
     @IBOutlet weak var myHeader: CustomHeaderCell!
     
     
     @IBOutlet weak var myHeadView: UIView!
     @IBOutlet weak var uxtableview: UITableView!
+    var searchController: UISearchController!
+    var customSearchController: CustomSearchController!
+    
+    var shouldShowSearchResults = false
     var timings = ["8:00 AM - 8:30 AM","8:30 AM - 9:30 AM","9:30 AM - 10:00 AM","10:00 AM - 10:30 AM","10:45 AM - 11:45 AM","11:45 AM - 12:15 PM","12:15 PM - 12:45 PM","13:45 PM - 14:45 PM","14:45 PM - 15:05 PM","15:05 PM - 15:35 PM","15:50 PM - 16:20 PM","16:20 PM - 16:50 PM","16:50 PM - 17:20 PM","18:30 PM"]
     var submatters = ["","Bapu Kaladhar is a Strategic Design Thinker and Information Architect. He is most interested in incubating new business models that deliver social impact,","Kalvakuntla Taraka Rama Rao popularly known as KTR, is an Indian politician from the Telangana state . He currently serves as the Cabinet Minister for the State for three different portfolios namely Information Technology (IT), Panchayat Raj and​ ​ Municipal Administration and Urban Development.","Jay Peters is the Managing Director of PARK USA, a world leading design & innovation management consulting firm, and Managing Director of Grow USA, a world leading professional education provider in Design","","Satish Ramachandran is the Global head of design at Nutanix where he is dedicated to applying design to reimagine enterprise computing.","Andrew is CEO and Product Manager of Optimal Workshop. Their tools are used and loved by information architects, designers and","","The Digital Product Design field has been going through an identity crisis for almost 20 years. It's about time we try to make sense of it.","","What has brought accolades to YUJ Designs is the way Prasadd drives user research, interaction design and visual design with equal zest and excellence.","","Jeremy has over 20 years of experience in design, particularly around human interactions and user experience, fostering collaborative",""]
     //var roomsnos = ["ROOM : Aura 2","ROOM : Harmony","ROOM : Aura 2"]
@@ -26,9 +32,11 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     
     var imagenames = ["","BAPU KALADHAR","K. T. RAMA RAO","JAY PETERS", "","SATISH RAMACHANDRAN","ANDREW MAYFIELD","","MARCELO PAIVA","","PRASADD BARTAKKE","DHEERAJ BATRA","JEREMY YUILLE",""]
     var headings = ["REGISTRATIONS","Opening Remarks","Honorable IT Minister,Telangana State","Managing & Leading Design Impact","DESIGN STARTUP","Reimagining Enterprise computing using Design","","INDUSTRY ACADEMIA FUSION","Impacting Organizations through proper Design practices education.","Program","","","","CLOSING REMARKS"]
+    var section3colorcodes : [UInt] = [0x6699ff,0x99cc33,0xff6633,0xff66cc]
     
     
     
+    var filterdArray : [String]? = []
     var headings1 = ["REGISTRATIONS","Opening Remarks","WOMEN IN DESIGN","","UX Clinic","","","CLOSING REMARKS"]
     var section3headings = ["Leadership Track","Advanced Track","Essentials Track","Women in Design Track"]
     var section5headings = ["Driving UX in an insurance company","Design, Develop and SURVIVE","Improving overall experience of an Enterprise Platform by Evidence and Research based design","Driving Design Thinking in Enterprise Products","Standing Strong: Leading Business By Design","Impact of Inclusive Design - beyond disabilities","Assistive Technology and UX","Design Intervention- How the industry evolved with it?","Building a great UX team: The hiring experience","Design Thinking - Getting From There to Here","","The Design Sprint - Transforming Constraints into Catalysts for Creativity and Innovation","Using UX to design user led furniture","Data Visualization Aiding Not Just Super Heroes","“Creating delightful human experiences | Social Centered design approach to impact people & Communities","Change by Design – A Woman-Centric Way of Driving the Design Culture","Design as Social Capital","'TOD' : A UX Pillar that helps in designing for decision makers","Progressive Web Applications - What to keep in mind","Women Entrepreneur in Design"]
@@ -40,9 +48,12 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     var section6imagesname1 = ["Discussion","user","Srinivas_Chinta_uxindia","Muzayun_uxindia","Discussion","narender_uxindia","shyam_uxindia","sirajuddin_uxindia","Discussion"]
     
     var imagenames1 = ["","BAPU KALADHAR","","","","","",""]
-    var section3imagesnames1 = ["Jeremy Yuille","Lakshman Pachineela","Marcelo Paiva","Shaun Wortis"]
-    var section5imagesnames1 = ["KEVIN BOEZENNEC","NAVEEN MAGMAIN","ABINAYA LANIAPPAN","MADHURI","ADITI AGARWAL","SRINIVASU CHAKRAVARTULA","CHANDNI RAJENDRAN","NEHA MODGIL","PRADEEP JOSEPH","MARIO","RANJEET","NIHARIKA MACHANDA","KRANTI M","BALAKRISHNA CHOMLA","PRASHANTH SHANMUGAM","PRACHI SAKHARDANDE","KSHITIZ ANAND","PRASHANT DIXIT","RAHUL ROUT","CHITRALI DHOLE"]
+    var section3imagesnames1 = ["Jeremy Yuille","Lakshman Pachineela","MARCELO PAIVA","Shaun Wortis"]
+    var section5imagesnames1 = ["KEVIN BOEZENNEC","NAVEEN MAGMAIN","ABINAYA LANIAPPAN","Madhuri Kolhatkar","ADITI AGARWAL","SRINIVASU CHAKRAVARTULA","CHANDNI RAJENDRAN","NEHA MODGIL","PRADEEP JOSEPH","Mario Van der Meulen","RANJEET","NIHARIKA MACHANDA","KRANTI M","BALAKRISHNA CHOMLA","PRASHANTH SHANMUGAM","PRACHI SAKHARDANDE","KSHITIZ ANAND","PRASHANT DIXIT","RAHUL ROUT","CHITRALI DHOLE"]
+    var section5colorcodes : [UInt] = [0x6699ff,0x99cc33,0xff6633,0xff66cc,0x6699ff,0x99cc33,0xff6633,0xff66cc,0x6699ff,0x99cc33,0xff6633,0xff66cc,0x6699ff,0x99cc33,0xff6633,0xff66cc,0x6699ff,0x99cc33,0xff6633,0xff66cc]
+    
     var section6imagesnames1 = ["","","SRINIVAS CHINTA","MUZAYUN MUKHTAR","","NARENDER GANGAPURI","SHYAM DURISETI","SIRAJUDDIN MUSTAFA",""]
+    var section6colorcodes  : [UInt] = [0x6699ff,0x99cc33,0xff6633,0x6699ff,0x99cc33,0xff6633,0x6699ff,0x99cc33,0xff6633]
     
     var submatters1 = ["","Bapu Kaladhar is a Strategic Design Thinker and Information Architect. He is most interested in incubating new business models that deliver social impact","","","BOARD ROOM","","","DAY CLOSES"]
     var section3submatters1 = ["Workshop 01","Workshop 02","Workshop 03","Workshop 04"]
@@ -64,9 +75,11 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     let section5imageName2 = ["user","Andrew_Mayfield_uxindia","Pablo_Sanchez_Martin_uxindia","madhuri_uxindia"]
     
     
-    var imagenames2 = ["","PABLO SANCHEZ","STEVE FADDEN","","","","",""]
-    let section3imagenames2 = ["Jay Peters","Steve Fadden","Kevin Boezennec","Robert Newham","Stuart Trevithick"]
-    let section5imagenames2 = ["Dheeraj Batra","Andrew Mayfield","Pablo Sanchez Martin","Madhuri Kolhatkar"]
+    var imagenames2 = ["","Pablo Sanchez Martin","STEVE FADDEN","","","","",""]
+    let section3imagenames2 = ["JAY PETERS","STEVE FADDEN","KEVIN BOEZENNEC","Robert Newham","Stuart Trevithick"]
+    let section5imagenames2 = ["DHEERAJ BATRA","ANDREW MAYFIELD","Pablo Sanchez Martin","Madhuri Kolhatkar"]
+    var section3colorcodes1 : [UInt] = [0x6699ff,0x99cc33,0xff6633,0xff66cc,0xff66cc]
+    var section5colorcodes1 : [UInt] = [0x6699ff,0x99cc33,0xff6633,0xff66cc]
     @IBOutlet weak var but22: UIButton!
     @IBOutlet weak var but21: UIButton!
     var valueToPass : String?
@@ -118,7 +131,58 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         but22.layer.cornerRadius=but20.frame.size.height/2
         uxtableview.rowHeight = UITableViewAutomaticDimension
         uxtableview.estimatedRowHeight = 140
+        uxtableview.delegate = self
+        uxtableview.dataSource = self
+        configureCustomSearchController()
         
+        
+    }
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let searchString = searchController.searchBar.text else {
+            return
+        }
+    }
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = true
+        uxtableview.reloadData()
+    }
+    
+    func configureCustomSearchController() {
+        customSearchController = CustomSearchController(searchResultsController: self, searchBarFrame: CGRect(x: 0.0, y: 0.0, width: uxtableview.frame.size.width, height: 50.0), searchBarFont: UIFont(name: "Futura", size: 16.0)!, searchBarTextColor: UIColor.orange, searchBarTintColor: UIColor.black)
+        
+        customSearchController.customSearchBar.placeholder = "Search for speakers.."
+        uxtableview.tableHeaderView = customSearchController.customSearchBar
+        
+        customSearchController.customDelegate = self
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = false
+        uxtableview.reloadData()
+    }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print("clicked")
+        if !shouldShowSearchResults {
+            shouldShowSearchResults = true
+            uxtableview.reloadData()
+        }
+        
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+    func configureSearchController() {
+        // Initialize and perform a minimum configuration to the search controller.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search here..."
+        searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        
+        // Place the search bar view to the tableview headerview.
+        uxtableview.tableHeaderView = searchController.searchBar
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -186,13 +250,21 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if imagenames[(indexPath as NSIndexPath).section] == ""
-        {
-            return nil
-        }
-        else{
-            return indexPath
-        }
+        
+        
+        //        if imagenames[(indexPath as NSIndexPath).section]  == ""
+        //        {
+        //            return nil
+        //        }
+        //    else if imagenames1[(indexPath as NSIndexPath).section] != "" || section3imagesnames1[(indexPath as NSIndexPath).row] != "" || section5imagesnames1[(indexPath as NSIndexPath).row] != "" || section6imagesnames1[(indexPath as NSIndexPath).row] != ""{
+        //                      return indexPath
+        //                }
+        //        else if imagenames2[(indexPath as NSIndexPath).section] != "" || section3imagenames2[(indexPath as NSIndexPath).row] != "" || section5imagenames2[(indexPath as NSIndexPath).row] != ""{
+        //            return indexPath
+        //        }
+        //        else{
+        return indexPath
+        //        }
     }
     
     // MARK: - Table view data source
@@ -228,32 +300,106 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        if timings[section] == "10:00 AM - 10:30 AM"
-        {
-            print("one")
-            return 40.0
+        if but20.backgroundColor != UIColor.clear{
+            if timings[section] == "10:00 AM - 10:30 AM"
+            {
+                print("one")
+                return 40.0
+            }
+            else if timings[section] == "12:15 PM - 12:45 PM"{
+                print("two")
+                
+                return 40.0
+                
+            }
+            else if timings[section] == "14:45 PM - 15:05 PM" {
+                print("three")
+                
+                return 40.0
+            }
+            else {
+                print("zero")
+                
+                return 0
+            }
         }
-        else if timings[section] == "12:15 PM - 12:45 PM"{
-            print("two")
-            
-            return 40.0
+        else if but21.backgroundColor != UIColor.clear{
+            if timings1[section] == "9:30 AM - 10:00 AM"
+            {
+                print("one")
+                return 40.0
+            }
+            else if timings1[section] == "10:30 AM - 13:00 PM"{
+                print("two")
+                
+                return 40.0
+                
+            }
+            else if timings1[section] == "14:00 PM - 16:30 PM" {
+                print("three")
+                
+                return 40.0
+            }
+            else {
+                print("zero")
+                
+                return 0
+            }
             
         }
-        else if timings[section] == "14:45 PM - 15:05 PM" {
-            print("three")
+        else{
+            if timings2[section] == "9:30 AM - 10:00 AM"
+            {
+                print("one")
+                return 40.0
+            }
+            else if timings2[section] == "10:20 AM - 13:00 PM"{
+                print("two")
+                
+                return 40.0
+                
+            }
+            else if timings2[section] == "14:00 PM - 16:30 PM" {
+                print("three")
+                
+                return 40.0
+            }
+            else {
+                print("zero")
+                
+                return 0
+            }
             
-            return 40.0
         }
-        else {
-            print("zero")
-            
-            return 0
+    }
+    
+    func didStartSearching() {
+        shouldShowSearchResults = true
+        uxtableview.reloadData()
+    }
+    func didTapOnSearchButton() {
+        if !shouldShowSearchResults {
+            shouldShowSearchResults = true
+            uxtableview.reloadData()
         }
     }
     
     
-    
-    
+    func didTapOnCancelButton() {
+        shouldShowSearchResults = false
+        uxtableview.reloadData()
+    }
+    func didChangeSearchText(_ searchText: String) {
+        // Filter the data array and get only those countries that match the search text.
+        filterdArray = imagenames.filter({ (country) -> Bool in
+            let countryText: NSString = country as NSString
+            
+            return (countryText.range(of: searchText, options: NSString.CompareOptions.caseInsensitive).location) != NSNotFound
+        })
+        
+        // Reload the tableview.
+        uxtableview.reloadData()
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MatterTableViewCell
         tableView.estimatedRowHeight = 100.0;
@@ -326,12 +472,14 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.heading?.text = section3headings[(indexPath as NSIndexPath).row]
                 cell.matter?.text = section3submatters1[(indexPath as NSIndexPath).row]
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
+                cell.colorbar.backgroundColor = UIColorFromRGB(section3colorcodes[(indexPath as NSIndexPath).row])
                 cell.imgv.image = UIImage(named: section3imagesname1[(indexPath as NSIndexPath).row])
                 cell.imgname?.text = section3imagesnames1[(indexPath as NSIndexPath).row]
                 break
             case 5:
                 cell.heading?.text = section5headings[(indexPath as NSIndexPath).row]
                 cell.matter?.text = section5submatters1[(indexPath as NSIndexPath).row]
+                cell.colorbar.backgroundColor = UIColorFromRGB(section5colorcodes[(indexPath as NSIndexPath).row])
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
                 cell.imgv.image = UIImage(named: section5imagesname1[(indexPath as NSIndexPath).row])
                 cell.imgname?.text = section5imagesnames1[(indexPath as NSIndexPath).row]
@@ -340,6 +488,8 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.heading?.text = section6headings[(indexPath as NSIndexPath).row]
                 cell.matter?.text = section6submatters1[(indexPath as NSIndexPath).row]
                 //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
+                cell.colorbar.backgroundColor = UIColorFromRGB(section6colorcodes[(indexPath as NSIndexPath).row])
+                
                 cell.imgv.image = UIImage(named: section6imagesname1[(indexPath as NSIndexPath).row])
                 cell.imgname?.text = section6imagesnames1[(indexPath as NSIndexPath).row]
                 break
@@ -361,6 +511,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.heading?.text = section3heading2[(indexPath as NSIndexPath).row]
                     cell.matter?.text = section3submatters2[(indexPath as NSIndexPath).row]
                     //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
+                    cell.colorbar.backgroundColor = UIColorFromRGB(section3colorcodes1[(indexPath as NSIndexPath).row])
                     cell.imgv.image = UIImage(named: section3imageName2[(indexPath as NSIndexPath).row])
                     cell.imgname?.text = section3imagenames2[(indexPath as NSIndexPath).row]
                     break
@@ -368,6 +519,8 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                     cell.heading?.text = section5heading2[(indexPath as NSIndexPath).row]
                     cell.matter?.text = section5submatters2[(indexPath as NSIndexPath).row]
                     //cell.roomno?.text = roomsnos[(indexPath as NSIndexPath).section]
+                    cell.colorbar.backgroundColor = UIColorFromRGB(section5colorcodes1[(indexPath as NSIndexPath).row])
+                    
                     cell.imgv.image = UIImage(named: section5imageName2[(indexPath as NSIndexPath).row])
                     cell.imgname?.text = section5imagenames2[(indexPath as NSIndexPath).row]
                     break
@@ -487,6 +640,26 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         version1.center = CGPoint(x :110, y: 20)
         version1.translatesAutoresizingMaskIntoConstraints = true
         footerView.addSubview(version1)
+        
+        
+        //        let footerView1 = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 40))
+        //
+        //
+        //        footerView1.backgroundColor = UIColorFromRGB(0x4D3291)
+        //
+        //        let version2 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        //        version2.font = version2.font.withSize(15)
+        //        version2.textColor = UIColor.white
+        //        version2.center = CGPoint(x: footerView1.bounds.size.width - 50, y: 20)
+        //        version2.translatesAutoresizingMaskIntoConstraints = true
+        //        footerView1.addSubview(version2)
+        //        let version3 = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        //        version3.font = version.font.withSize(15)
+        //        version3.textColor = UIColor.white
+        //        version3.center = CGPoint(x :110, y: 20)
+        //        version3.translatesAutoresizingMaskIntoConstraints = true
+        //        footerView1.addSubview(version3)
+        
         if but20.backgroundColor != UIColor.clear{
             print("20if")
             if timings[section] == "10:00 AM - 10:30 AM"
@@ -513,65 +686,60 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
                 print("zero")
                 
             }
+            
         }
         else if but21.backgroundColor != UIColor.clear{
             print("21if")
             
-            if section == 2
+            if timings1[section] == "9:30 AM - 10:00 AM"
             {
                 version.text = "10:00 AM - 10:30 AM";
                 version1.text = "COFFEE BREAK"
                 
             }
-            else if section == 4{
+            else if timings1[section] == "10:30 AM - 13:00 PM"{
                 print("two2")
                 version.text = "13:00 PM - 14:00 PM";
                 version1.text = "LUNCH BREAK";
                 
                 
             }
-            else if section == 5 {
+            else if timings1[section] == "14:00 PM - 16:30 PM" {
                 print("three3")
                 version.text = "16:30 PM - 16:45 PM";
                 version1.text = "COFFEE BREAK"
-                
+            }
+            else{
                 
             }
-            else {
-                print("zero")
-                
-            }
-            
         }
-        else {
-            if section == 2
+        else  if but22.backgroundColor != UIColor.clear{
+            if  timings2[section] == "9:30 AM - 10:00 AM"
             {
                 version.text = "10:00 AM - 10:20 AM";
                 version1.text = "COFFEE BREAK"
                 
             }
-            else if section == 4{
+            else if timings2[section] == "10:20 AM - 13:00 PM"
+            {
                 print("two")
                 version.text = "13:00 PM - 14:00 PM";
                 version1.text = "LUNCH BREAK";
-                
-                
             }
-            else if section == 5 {
+            else if timings2[section] == "14:00 PM - 16:30 PM"
+            {
                 print("three")
                 version.text = "16:30 PM - 17:00 PM";
                 version1.text = "COFFEE BREAK"
-                
-                
             }
             else {
                 print("zero")
                 
             }
-            
         }
         
         return footerView
+        
     }
     
 }
