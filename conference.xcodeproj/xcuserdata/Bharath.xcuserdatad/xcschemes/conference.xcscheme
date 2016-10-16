@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EC290061D6B5DAD00D8799F"
-               BuildableName = "2016.app"
-               BlueprintName = "2016"
-               ReferencedContainer = "container:2016.xcodeproj">
+               BuildableName = "conference.app"
+               BlueprintName = "conference"
+               ReferencedContainer = "container:conference.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EC2901C1D6B5DB200D8799F"
-               BuildableName = "2016Tests.xctest"
-               BlueprintName = "2016Tests"
-               ReferencedContainer = "container:2016.xcodeproj">
+               BuildableName = "conferenceTests.xctest"
+               BlueprintName = "conferenceTests"
+               ReferencedContainer = "container:conference.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8EC290271D6B5DB200D8799F"
-               BuildableName = "2016UITests.xctest"
-               BlueprintName = "2016UITests"
-               ReferencedContainer = "container:2016.xcodeproj">
+               BuildableName = "conferenceUITests.xctest"
+               BlueprintName = "conferenceUITests"
+               ReferencedContainer = "container:conference.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EC290061D6B5DAD00D8799F"
-            BuildableName = "2016.app"
-            BlueprintName = "2016"
-            ReferencedContainer = "container:2016.xcodeproj">
+            BuildableName = "conference.app"
+            BlueprintName = "conference"
+            ReferencedContainer = "container:conference.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EC290061D6B5DAD00D8799F"
-            BuildableName = "2016.app"
-            BlueprintName = "2016"
-            ReferencedContainer = "container:2016.xcodeproj">
+            BuildableName = "conference.app"
+            BlueprintName = "conference"
+            ReferencedContainer = "container:conference.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8EC290061D6B5DAD00D8799F"
-            BuildableName = "2016.app"
-            BlueprintName = "2016"
-            ReferencedContainer = "container:2016.xcodeproj">
+            BuildableName = "conference.app"
+            BlueprintName = "conference"
+            ReferencedContainer = "container:conference.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
