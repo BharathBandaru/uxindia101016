@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.tintColor = UIColor(red: 246/255, green: 78/255, blue: 10/255, alpha: 1.0)
        // UINavigationBar.appearance().barTintColor = UIColor(red: 59/255, green: 31/255, blue: 127/255, alpha: 1.0)
         UIToolbar.appearance().barTintColor = UIColor(red: 204/255, green: 204/255, blue: 204/255, alpha: 1.0)
-
+        UITextField.appearance().keyboardAppearance = .light
         let defaults = UserDefaults.standard
         if defaults.value(forKey: "firsttime") == nil {
             defaults.set(false, forKey: "firsttime")

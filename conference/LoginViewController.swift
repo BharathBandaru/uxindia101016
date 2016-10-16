@@ -50,6 +50,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
 
     @IBAction func LoginButtonAction(_ sender: AnyObject) {
+        print("clicked")
         print(emailTF.text)
         print(passcodeTF.text)
         if passcodeTF.text == password {
@@ -77,11 +78,15 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     }
     
     // for hitting return
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         emailTF.resignFirstResponder()
         passcodeTF.resignFirstResponder()
 
         return true
+    }
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     /*
     // MARK: - Navigation

@@ -12,9 +12,9 @@ import UIKit
 class ScheduleViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating,UISearchBarDelegate,CustomSearchControllerDelegate
 {
     
+    var portrait: UIInterfaceOrientationMask = []
     @IBOutlet weak var myHeader: CustomHeaderCell!
-    
-    
+
     @IBOutlet weak var myHeadView: UIView!
     @IBOutlet weak var uxtableview: UITableView!
     var searchController: UISearchController!
@@ -599,7 +599,6 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let  headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderCell") as! CustomHeaderCell
         headerCell.backgroundColor = UIColorFromRGB(0xFF5A00)
-        
         if but20.backgroundColor != UIColor.clear{
             headerCell.headerLabel.text = timings[section];
         }
@@ -749,6 +748,7 @@ class ScheduleViewController: UIViewController, UITableViewDelegate, UITableView
         return footerView
         
     }
+
     
 }
 

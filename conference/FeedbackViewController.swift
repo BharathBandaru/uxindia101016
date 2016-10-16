@@ -44,18 +44,7 @@ class FeedbackViewController: UIViewController {
             print("rating :\(rating)")
             self.rate1 = rating
         }
-        if isConnectedToNetwork() == true {
-            print("Internet connection OK")
-            
-        } else {
-            print("Internet connection FAILED")
-            let alertController = UIAlertController(title: "Error", message: "No internet connection", preferredStyle: .alert)
-            self.present(alertController, animated: true, completion:nil)
-            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
-                print("You've pressed OK button");
-            }
-            alertController.addAction(OKAction)
-        }
+       
         
     }
     
@@ -123,10 +112,34 @@ class FeedbackViewController: UIViewController {
         }
     }
     @IBAction func FaceAction(_ sender: AnyObject) {
-        facebook()
+        if isConnectedToNetwork() == true {
+            facebook()
+            
+        } else {
+            print("Internet connection FAILED")
+            let alertController = UIAlertController(title: "Error", message: "No internet connection", preferredStyle: .alert)
+            self.present(alertController, animated: true, completion:nil)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                print("You've pressed OK button");
+            }
+            alertController.addAction(OKAction)
+        }
+
+        
     }
     @IBAction func tweetButton(_ sender: AnyObject) {
-        tweet()
+        if isConnectedToNetwork() == true {
+            tweet()
+            
+        } else {
+            print("Internet connection FAILED")
+            let alertController = UIAlertController(title: "Error", message: "No internet connection", preferredStyle: .alert)
+            self.present(alertController, animated: true, completion:nil)
+            let OKAction = UIAlertAction(title: "OK", style: .default) { (action:UIAlertAction) in
+                print("You've pressed OK button");
+            }
+            alertController.addAction(OKAction)
+        }
     }
     @IBAction func SubmitRating(_ sender: AnyObject) {
         if isConnectedToNetwork() == true {
